@@ -1,0 +1,8 @@
+buoi 9:
+*Routing
+
+buoi 10:
+- axios: fetch data
+- Redux thunk
+- Detail Movie
+- get params from URL
