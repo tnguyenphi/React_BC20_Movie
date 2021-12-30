@@ -6,3 +6,7 @@ buoi 10:
 - Redux thunk
 - Detail Movie
 - get params from URL
+buoi 11:
+- Redux thunk
+- Detail Movie
+- get params from URL

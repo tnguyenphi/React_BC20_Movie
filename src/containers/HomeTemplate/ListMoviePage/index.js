@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import Movie from './Movie';
-import {actListMovieRequest, actListMovieSuccess, actListMovieFailed} from "./Modules/action"
+import {actFetchListMovie, actListMovieRequest, actListMovieSuccess, actListMovieFailed} from "./Modules/action"
 import { connect } from 'react-redux';
-import { timers } from 'jquery';
 
  class ListMoviePage extends Component {
 
@@ -17,35 +16,36 @@ import { timers } from 'jquery';
     // }
 
     componentDidMount() {
-        // //set loading
-        // this.setState({
-        //     loading: true,
-        //     data: null,
-        //     error: null,
-        // });
-        this.props.listMovieRequest();
-        //call api
-        axios({
-            url: "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01",
-            method: "GET",
-        })
-            .then((result) => {
-                // console.log(result.data);
-                // this.setState({
-                //     loading: false,
-                //     data: result.data,
-                //     error: null,
-                // })
-                this.props.listMovieSuccess(result.data);
-            })
-            .catch((err) => {
-                // this.setState({
-                //     loading: false,
-                //     data: null,
-                //     error: err,
-                // })
-                this.props.listMovieFailed(err);
-            })
+        this.props.fetchData();
+        // // //set loading
+        // // this.setState({
+        // //     loading: true,
+        // //     data: null,
+        // //     error: null,
+        // // });
+        // this.props.listMovieRequest();
+        // //call api
+        // axios({
+        //     url: "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01",
+        //     method: "GET",
+        // })
+        //     .then((result) => {
+        //         // console.log(result.data);
+        //         // this.setState({
+        //         //     loading: false,
+        //         //     data: result.data,
+        //         //     error: null,
+        //         // })
+        //         this.props.listMovieSuccess(result.data);
+        //     })
+        //     .catch((err) => {
+        //         // this.setState({
+        //         //     loading: false,
+        //         //     data: null,
+        //         //     error: err,
+        //         // })
+        //         this.props.listMovieFailed(err);
+        //     })
     }
     renderListMovie = () => {
         return this.props.data?.map((movie) => {
@@ -54,7 +54,7 @@ import { timers } from 'jquery';
     }
     render() {
         const {loading} = this.props;
-        if (loading) return <div>Loding.......</div>
+        if (loading) return <div>Loading.......</div>
         return (
             <div className="contrainer">
                 <div className="row">
@@ -72,18 +72,23 @@ const mapStateToProps = (state) => {
     }
 }
 const mapDispatchToProps = (dispatch) => {
+    // return {
+    //     listMovieRequest: () => {
+    //         dispatch(actListMovieRequest());
+    //     },
+
+    //     listMovieSuccess : (data) => {
+    //         dispatch(actListMovieSuccess(data))
+    //     },
+
+    //     listMovieFailed: (error) =>{
+    //         dispatch(actListMovieFailed(error))
+    //     },
+    // }
     return {
-        listMovieRequest: () => {
-            dispatch(actListMovieRequest());
-        },
-
-        listMovieSuccess : (data) => {
-            dispatch(actListMovieSuccess(data))
-        },
-
-        listMovieFailed: (error) =>{
-            dispatch(actListMovieFailed(error))
-        },
+        fetchData: ()=>{
+            dispatch(actFetchListMovie());
+        }
     }
 }
 
