@@ -3,6 +3,8 @@ import AboutPage from "../containers/HomeTemplate/AboutPage";
 import ListMoviePage from "../containers/HomeTemplate/ListMoviePage";
 import {Route} from "react-router-dom";
 import DetailMoviePage from "../containers/HomeTemplate/DetailMoviePage";
+import HocPage from "../containers/HomeTemplate/HocPage";
+import HooksPage from "../containers/HomeTemplate/Hooks";
 const routesHome = [
     //Home
     {
@@ -27,7 +29,21 @@ const routesHome = [
         path:"/detail/:id" ,
         component: DetailMoviePage,
 
-    }
+    },
+    //HocPage
+    {
+        exact:false ,
+        path:"/hoc" ,
+        component: HocPage,
+
+    },
+    //HooksPage
+    {
+        exact:false ,
+        path:"/hooks" ,
+        component: HooksPage,
+
+    },
 ];
 
 const routesAdmin = [];
