@@ -1,4 +1,5 @@
-import {useState, useEffect} from "react"
+import {useState, useEffect} from "react";
+
 export function useMagicColor () {
     const [color, setColor] = useState("red");
     useEffect(()=>{
@@ -12,5 +13,5 @@ export function useMagicColor () {
             clearInterval(interval);
         };
     },[]);
-    return color
+    return color;
 }

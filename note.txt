@@ -14,3 +14,7 @@ buoi 11:
 buoi 12:
 - HOC (HIgher order Compononetfa-border): 1 component return ve 1 component khac
 - Hooks
+buoi 13:
+- routing (HomeTemplate & admintemplate)
+- Auth
+- Guard Routing Admin
