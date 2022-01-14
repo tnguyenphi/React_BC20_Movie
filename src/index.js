@@ -1,16 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 import "jquery/dist/jquery.min.js";
-import "popper.js/dist/umd/popper.min.js"
-import "bootstrap/dist/js/bootstrap.min.js"
-import "bootstrap/dist/css/bootstrap.min.css"
+import "popper.js/dist/umd/popper.min.js";
+import "bootstrap/dist/js/bootstrap.min.js";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-import { createStore, applyMiddleware, compose} from "redux";
+import "./scss/index.scss";
+
+import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
-import rootReducer from './store';
+import rootReducer from "./reducer";
 
 import thunk from "redux-thunk";
 
@@ -20,15 +22,13 @@ const store = createStore(
   rootReducer,
   // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   composeEnhancers(applyMiddleware(thunk))
-  );
-
-
+);
 
 ReactDOM.render(
-  <Provider store={store} >
+  <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

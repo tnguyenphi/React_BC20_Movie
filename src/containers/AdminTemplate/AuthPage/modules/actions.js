@@ -1,31 +1,36 @@
 import * as ActionType from "./constants";
 
 import axios from "axios";
+import api from "../../../../utils/apiUtils";
 
 export const actAuth = (user, history) => {
   return (dispatch) => {
     dispatch(actAuthRequest());
-    axios({
-      url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangNhap",
-      method: "POST",
-      data: user,
-    })
+    // axios({
+    //   url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangNhap",
+    //   method: "POST",
+    //   data: user,
+    // })
+    api
+      .post("QuanLyNguoiDung/DangNhap", user)
       .then((result) => {
         //check ma loai nguoi dung
-        if (result.data.maLoaiNguoiDung === "KhachHang") {
+        if (result.data.content.maLoaiNguoiDung === "KhachHang") {
           return Promise.reject({
             response: {
-              data: "Ban khong co quyen truy cap",
+              data: {
+                content: "Ban khong co quyen truy cap",
+              },
             },
           });
         }
         //luu thong tin login xuong localStorage
-        localStorage.setItem("UserAdmin", JSON.stringify(result.data));
+        localStorage.setItem("UserAdmin", JSON.stringify(result.data.content));
 
         //redirect qua trang Dashboard
         history.replace("/dashboard");
 
-        dispatch(actAuthSuccess(result.data));
+        dispatch(actAuthSuccess(result.data.content));
       })
       .catch((error) => {
         dispatch(actAuthFailed(error));

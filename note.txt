@@ -19,5 +19,17 @@ buoi 13:
 - Auth
 - Guard Routing Admin
 buoi 14:
-- 
--
+- Guard routing admin
+- add add user
+- styled component
+buoi 15
+- masterial UI
+- scss
+- alias (jsconfig.json)
+- lazy load page (lazy load react)
+- refactor service ()
+- build
+ + hosting {sever}
+ + domain {abc.com}
+ *deloy app heroku
+

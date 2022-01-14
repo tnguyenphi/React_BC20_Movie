@@ -10,28 +10,33 @@ import { renderRoutesHome, renderRoutesAdmin } from "./routes";
 import AuthPage from "./containers/AdminTemplate/AuthPage";
 import BaiTapGameBauCua from "./BaiTapTongHop/BaiTapGameBauCua/BaiTapGameBauCua";
 
+import React, { Suspense } from "react";
+
 function App() {
   return (
-    <BrowserRouter>
-      {/* <NavbarHome/> */}
-      <Switch>
-        {renderRoutesHome()}
-        {renderRoutesAdmin()}
-        {/* Trang Home - localhost:3000 */}
-        {/* <Route exact path="/" component={HomePage} /> */}
+    <Suspense fallback={<div>Loading...</div>}>
+      <BrowserRouter>
+        {/* <NavbarHome/> */}
+        <Switch>
+          {renderRoutesHome()}
+          {renderRoutesAdmin()}
+          {/* Trang Home - localhost:3000 */}
+          {/* <Route exact path="/" component={HomePage} /> */}
 
-        {/* Trang About - localhost:3000/about */}
-        {/* <Route path="/about" component={AboutPage} /> */}
+          {/* Trang About - localhost:3000/about */}
+          {/* <Route path="/about" component={AboutPage} /> */}
 
-        {/* Trang About - localhost:3000/list-movie */}
-        {/* <Route path="/list-movie" component={ListMoviePage} />   */}
+          {/* Trang About - localhost:3000/list-movie */}
+          {/* <Route path="/list-movie" component={ListMoviePage} />   */}
 
-        <Route path="/auth" component={AuthPage} />
+          <Route path="/auth" component={AuthPage} />
 
-        {/* THang khong tim thay */}
-        <Route path="" component={PageNotFound} />
-      </Switch>
-    </BrowserRouter>
+          {/* THang khong tim thay */}
+          <Route path="" component={PageNotFound} />
+        </Switch>
+      </BrowserRouter>
+    </Suspense>
+
     // <BaiTapGameBauCua />
   );
 }

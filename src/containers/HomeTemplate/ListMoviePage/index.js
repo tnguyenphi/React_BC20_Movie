@@ -8,7 +8,7 @@ import {
   actListMovieFailed,
 } from "./Modules/action";
 import { connect } from "react-redux";
-import Loading from "../../../components/Loading";
+import Loading from "components/Loading";
 
 class ListMoviePage extends Component {
   // constructor(props) {
